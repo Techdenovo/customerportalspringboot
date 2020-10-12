@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("customer")
+
 public class CustomerController {
 
     @Autowired
@@ -26,5 +26,11 @@ public class CustomerController {
         Customer customer = new Customer();
         model.addAttribute("customer", customer);
         return "add-customer";
+    }
+
+    @PostMapping("/saveCustomer")
+    public String saveCustomer(@ModelAttribute("customer") Customer customer){
+        customerService.addCustomer(customer);
+        return "redirect:/";
     }
 }

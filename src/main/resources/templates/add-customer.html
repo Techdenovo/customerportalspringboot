@@ -8,10 +8,23 @@
 </head>
 <body>
     <div class="fluid">
-        
-        <form action="#" th:action="@{/saveCustomer}" th:object="customer", method="POST">
-            
-        </form>
+        <div class="container">
+            <form action="#" th:action="@{/saveCustomer}" th:object="${customer}", method="POST">
+                <div class="form-group">
+                    <label for="inputFirstName">First Name</label>
+                    <input type="text" class="form-control" id="inputFirstName" th:field="*{firstName}">
+                </div>
+                <div class="form-group">
+                    <label for="inputLastName">Last Name</label>
+                    <input type="text" class="form-control" id="inputLastName" th:field="*{lastName}">
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">Email address</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="name@example.com" th:field="*{emailId}">
+                </div>
+                <button type="submit" class="btn btn-primary">Save Customer</button>
+            </form>
+        </div> 
     </div>    
 </body>
 </html>
