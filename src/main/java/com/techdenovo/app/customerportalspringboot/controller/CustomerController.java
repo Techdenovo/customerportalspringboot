@@ -33,4 +33,23 @@ public class CustomerController {
         customerService.addCustomer(customer);
         return "redirect:/";
     }
+
+    @GetMapping("/showFormForUpdate/{id}")
+    public String showFormForUpdate(@PathVariable ( value = "id") long id, Model model) {
+
+        // get employee from the service
+        Customer customer = customerService.getCustomerById(id);
+
+        // set employee as a model attribute to pre-populate the form
+        model.addAttribute("customer", customer);
+        return "update-customer";
+    }
+
+    @GetMapping("/deleteCustomer/{id}")
+    public String deleteEmployee(@PathVariable (value = "id") long id) {
+
+        // call delete employee method
+        this.customerService.deleteCustomer(id);
+        return "redirect:/";
+    }
 }
